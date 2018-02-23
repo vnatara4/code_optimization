@@ -1,0 +1,321 @@
+   1              		.cpu cortex-a8
+   2              		.eabi_attribute 27, 3
+   3              		.fpu neon
+   4              		.eabi_attribute 23, 1
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 2
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 18, 4
+  10              		.file	"mandel.c"
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.align	2
+  21              		.p2align 4,,15
+  22              		.global	main
+  24              	main:
+  25              	.LFB11:
+  26              		.file 1 "mandel.c"
+   1:mandel.c      **** #include "stdio.h"
+   2:mandel.c      **** 
+   3:mandel.c      **** #define MaxIters 200
+   4:mandel.c      **** #define SIZE     1000
+   5:mandel.c      **** #define BLACK    -1
+   6:mandel.c      **** #define LEFT     -2.0
+   7:mandel.c      **** #define RIGHT    1.0
+   8:mandel.c      **** #define TOP      1.0
+   9:mandel.c      **** #define BOTTOM   -1.0
+  10:mandel.c      **** #define CVT_SIZE 7
+  11:mandel.c      **** 
+  12:mandel.c      **** int main(int argc, char *argv[])
+  13:mandel.c      **** {
+  27              		.loc 1 13 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 4000008
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  14:mandel.c      ****   short   x, y, count;
+  15:mandel.c      ****   float zr, zi, cr, ci;
+  16:mandel.c      ****   float rsquared, isquared;
+  17:mandel.c      ****   unsigned image[SIZE][SIZE];
+  18:mandel.c      ****   char cvt[CVT_SIZE+1] = "* .-+#@";
+  19:mandel.c      **** 
+  20:mandel.c      ****   for (y = 0; y < SIZE; y++)
+  21:mandel.c      ****     {
+  22:mandel.c      ****       for (x = 0; x < SIZE; x++)
+  23:mandel.c      ****         {
+  24:mandel.c      **** 	  zr = 0.0;
+  25:mandel.c      **** 	  zi = 0.0;
+  26:mandel.c      **** 	  cr = LEFT + x * (RIGHT - LEFT) / SIZE;
+  27:mandel.c      **** 
+  28:mandel.c      **** 	  ci = TOP + y * (BOTTOM - TOP) / SIZE;
+  29:mandel.c      **** 	  rsquared = zr * zr;
+  30:mandel.c      **** 	  isquared = zi * zi;
+  31:mandel.c      **** 
+  32:mandel.c      **** 	  for (count = 0; rsquared + isquared <= 4.0
+  32              		.loc 1 32 0
+  33 0000 004AB1EE 		fconsts	s8, #16
+  18:mandel.c      ****   char cvt[CVT_SIZE+1] = "* .-+#@";
+  34              		.loc 1 18 0
+  35 0004 001000E3 		movw	r1, #:lower16:.LC0
+  36              	.LVL1:
+  13:mandel.c      **** {
+  37              		.loc 1 13 0
+  38 0008 F0402DE9 		stmfd	sp!, {r4, r5, r6, r7, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 20
+  26:mandel.c      **** 	  cr = LEFT + x * (RIGHT - LEFT) / SIZE;
+  41              		.loc 1 26 0
+  42 000c 5D3ADFED 		flds	s7, .L18
+  13:mandel.c      **** {
+  43              		.loc 1 13 0
+  44 0010 3DD84DE2 		sub	sp, sp, #3997696
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 3997716
+  47 0014 09DC4DE2 		sub	sp, sp, #2304
+  48              	.LCFI2:
+  49              		.cfi_def_cfa_offset 4000020
+  18:mandel.c      ****   char cvt[CVT_SIZE+1] = "* .-+#@";
+  50              		.loc 1 18 0
+  51 0018 001040E3 		movt	r1, #:upper16:.LC0
+  13:mandel.c      **** {
+  52              		.loc 1 13 0
+  53 001c 0CD04DE2 		sub	sp, sp, #12
+  54              	.LCFI3:
+  55              		.cfi_def_cfa_offset 4000032
+  13:mandel.c      **** {
+  56              		.loc 1 13 0
+  57 0020 00C0A0E1 		mov	ip, r0
+  18:mandel.c      ****   char cvt[CVT_SIZE+1] = "* .-+#@";
+  58              		.loc 1 18 0
+  59 0024 3D288DE2 		add	r2, sp, #3997696
+  60 0028 030091E8 		ldmia	r1, {r0, r1}
+  61              	.LVL2:
+  62 002c 092C82E2 		add	r2, r2, #2304
+  63 0030 0030A0E3 		mov	r3, #0
+  64 0034 030082E8 		stmia	r2, {r0, r1}
+  65              	.LVL3:
+  66              		.loc 1 32 0
+  67 0038 442AF0EE 		fcpys	s5, s8
+  68              	.LVL4:
+  69              	.L2:
+  20:mandel.c      ****   for (y = 0; y < SIZE; y++)
+  70              		.loc 1 20 0 discriminator 1
+  71 003c 7300BFE6 		sxth	r0, r3
+  72 0040 004AF7EE 		fconsts	s9, #112
+  73 0044 507ADFED 		flds	s15, .L18+4
+  12:mandel.c      **** int main(int argc, char *argv[])
+  74              		.loc 1 12 0 discriminator 1
+  75 0048 0040A0E3 		mov	r4, #0
+  76              		.cfi_offset 14, -4
+  77              		.cfi_offset 7, -8
+  78              		.cfi_offset 6, -12
+  79              		.cfi_offset 5, -16
+  80              		.cfi_offset 4, -20
+  20:mandel.c      ****   for (y = 0; y < SIZE; y++)
+  81              		.loc 1 20 0 discriminator 1
+  82 004c 900A05EE 		fmsr	s11, r0	@ int
+  12:mandel.c      **** int main(int argc, char *argv[])
+  83              		.loc 1 12 0 discriminator 1
+  84 0050 04108DE0 		add	r1, sp, r4
+  85 0054 035181E0 		add	r5, r1, r3, asl #2
+  86 0058 0410A0E1 		mov	r1, r4
+  20:mandel.c      ****   for (y = 0; y < SIZE; y++)
+  87              		.loc 1 20 0 discriminator 1
+  88 005c E57AB8EE 		fsitos	s14, s11
+  89 0060 274A47EE 		fmacs	s9, s14, s15
+  26:mandel.c      **** 	  cr = LEFT + x * (RIGHT - LEFT) / SIZE;
+  90              		.loc 1 26 0 discriminator 1
+  91 0064 003AB8EE 		fconsts	s6, #128
+  92              	.LVL5:
+  93              	.L7:
+  26:mandel.c      **** 	  cr = LEFT + x * (RIGHT - LEFT) / SIZE;
+  94              		.loc 1 26 0 is_stmt 0
+  95 0068 901A07EE 		fmsr	s15, r1	@ int
+  30:mandel.c      **** 	  isquared = zi * zi;
+  96              		.loc 1 30 0 is_stmt 1
+  97 006c 476ADFED 		flds	s13, .L18+8
+  26:mandel.c      **** 	  cr = LEFT + x * (RIGHT - LEFT) / SIZE;
+  98              		.loc 1 26 0
+  99 0070 435AB0EE 		fcpys	s10, s6
+ 100              		.loc 1 32 0
+ 101 0074 0010A0E3 		mov	r1, #0
+  26:mandel.c      **** 	  cr = LEFT + x * (RIGHT - LEFT) / SIZE;
+ 102              		.loc 1 26 0
+ 103 0078 E75AF8EE 		fsitos	s11, s15
+ 104 007c A35A05EE 		fmacs	s10, s11, s7
+  29:mandel.c      **** 	  rsquared = zr * zr;
+ 105              		.loc 1 29 0
+ 106 0080 666AB0EE 		fcpys	s12, s13
+  25:mandel.c      **** 	  zi = 0.0;
+ 107              		.loc 1 25 0
+ 108 0084 667AB0EE 		fcpys	s14, s13
+  24:mandel.c      **** 	  zr = 0.0;
+ 109              		.loc 1 24 0
+ 110 0088 667AF0EE 		fcpys	s15, s13
+ 111              	.LVL6:
+ 112              	.L3:
+  33:mandel.c      **** 		 && count < MaxIters; count++)
+  34:mandel.c      ****             {
+  35:mandel.c      **** 	      zi = zr * zi * 2;
+ 113              		.loc 1 35 0
+ 114 008c A77A77EE 		fadds	s15, s15, s15
+  33:mandel.c      **** 		 && count < MaxIters; count++)
+ 115              		.loc 1 33 0
+ 116 0090 011081E2 		add	r1, r1, #1
+ 117 0094 7110FFE6 		uxth	r1, r1
+ 118 0098 7100BFE6 		sxth	r0, r1
+  36:mandel.c      **** 	      zi += ci;
+ 119              		.loc 1 36 0
+ 120 009c 645AF0EE 		fcpys	s11, s9
+ 121 00a0 875A47EE 		fmacs	s11, s15, s14
+  37:mandel.c      **** 
+  38:mandel.c      **** 	      zr = rsquared - isquared;
+ 122              		.loc 1 38 0
+ 123 00a4 057A76EE 		fadds	s15, s12, s10
+  39:mandel.c      **** 	      zr += cr;
+ 124              		.loc 1 39 0
+ 125 00a8 E67A77EE 		fsubs	s15, s15, s13
+  40:mandel.c      **** 
+  41:mandel.c      **** 	      rsquared = zr * zr;
+  42:mandel.c      **** 	      isquared = zi * zi;
+ 126              		.loc 1 42 0
+ 127 00ac A56A65EE 		fmuls	s13, s11, s11
+  41:mandel.c      **** 	      rsquared = zr * zr;
+ 128              		.loc 1 41 0
+ 129 00b0 A76A27EE 		fmuls	s12, s15, s15
+  36:mandel.c      **** 	      zi += ci;
+ 130              		.loc 1 36 0
+ 131 00b4 657AB0EE 		fcpys	s14, s11
+ 132              	.LVL7:
+  32:mandel.c      **** 	  for (count = 0; rsquared + isquared <= 4.0
+ 133              		.loc 1 32 0
+ 134 00b8 865A76EE 		fadds	s11, s13, s12
+ 135              	.LVL8:
+ 136 00bc C45AF4EE 		fcmpes	s11, s8
+ 137 00c0 10FAF1EE 		fmstat
+ 138 00c4 0070A083 		movhi	r7, #0
+ 139 00c8 0170A093 		movls	r7, #1
+ 140 00cc C70050E3 		cmp	r0, #199
+ 141 00d0 0070A0C3 		movgt	r7, #0
+ 142 00d4 017007D2 		andle	r7, r7, #1
+ 143 00d8 000057E3 		cmp	r7, #0
+ 144 00dc EAFFFF1A 		bne	.L3
+  22:mandel.c      ****       for (x = 0; x < SIZE; x++)
+ 145              		.loc 1 22 0
+ 146 00e0 014084E2 		add	r4, r4, #1
+  43:mandel.c      ****             }
+  44:mandel.c      **** 
+  45:mandel.c      **** 	  if (rsquared + isquared <= 4.0)
+  46:mandel.c      **** 	    image[x][y] = 0;
+  47:mandel.c      **** 	  else
+  48:mandel.c      **** 	    image[x][y] = count;
+ 147              		.loc 1 48 0
+ 148 00e4 E25AF4EE 		fcmpes	s11, s5
+  22:mandel.c      ****       for (x = 0; x < SIZE; x++)
+ 149              		.loc 1 22 0
+ 150 00e8 7440FFE6 		uxth	r4, r4
+ 151              	.LVL9:
+ 152 00ec 7410BFE6 		sxth	r1, r4
+ 153              	.LVL10:
+ 154              		.loc 1 48 0
+ 155 00f0 10FAF1EE 		fmstat
+ 156 00f4 0700A091 		movls	r0, r7
+  22:mandel.c      ****       for (x = 0; x < SIZE; x++)
+ 157              		.loc 1 22 0
+ 158 00f8 FA0F51E3 		cmp	r1, #1000
+ 159              		.loc 1 48 0
+ 160 00fc A00F85E4 		str	r0, [r5], #4000
+  22:mandel.c      ****       for (x = 0; x < SIZE; x++)
+ 161              		.loc 1 22 0
+ 162 0100 D8FFFF1A 		bne	.L7
+ 163              	.LVL11:
+ 164 0104 013083E2 		add	r3, r3, #1
+ 165              	.LVL12:
+  20:mandel.c      ****   for (y = 0; y < SIZE; y++)
+ 166              		.loc 1 20 0
+ 167 0108 FA0F53E3 		cmp	r3, #1000
+ 168 010c CAFFFF1A 		bne	.L2
+  49:mandel.c      **** 
+  50:mandel.c      ****         }
+  51:mandel.c      ****     }
+  52:mandel.c      **** 
+  53:mandel.c      ****   if (argc > 1) {
+ 169              		.loc 1 53 0
+ 170 0110 01005CE3 		cmp	ip, #1
+ 171 0114 160000DA 		ble	.L9
+  54:mandel.c      ****     for (y = 0; y < SIZE; y++)
+  55:mandel.c      ****       {
+  56:mandel.c      **** 	for (x = 0; x < SIZE; x++)
+  57:mandel.c      **** 	  {
+  58:mandel.c      **** 	    printf("%c", cvt[(image[x][y])/CVT_SIZE]);
+ 172              		.loc 1 58 0
+ 173 0118 256904E3 		movw	r6, #18725
+  53:mandel.c      ****   if (argc > 1) {
+ 174              		.loc 1 53 0
+ 175 011c 0250A0E1 		mov	r5, r2
+ 176              		.loc 1 58 0
+ 177 0120 926442E3 		movt	r6, 9362
+ 178              	.LVL13:
+ 179              	.L10:
+  12:mandel.c      **** int main(int argc, char *argv[])
+ 180              		.loc 1 12 0 discriminator 1
+ 181 0124 00308DE2 		add	r3, sp, #0
+ 182 0128 074183E0 		add	r4, r3, r7, asl #2
+ 183              	.LVL14:
+ 184              	.L11:
+ 185              		.loc 1 58 0 discriminator 2
+ 186 012c A02F94E4 		ldr	r2, [r4], #4000
+ 187 0130 961283E0 		umull	r1, r3, r6, r2
+ 188 0134 022063E0 		rsb	r2, r3, r2
+ 189 0138 A23083E0 		add	r3, r3, r2, lsr #1
+ 190 013c 082900E3 		movw	r2, #2312
+ 191 0140 3D2040E3 		movt	r2, 61
+ 192 0144 02208DE0 		add	r2, sp, r2
+ 193 0148 233182E0 		add	r3, r2, r3, lsr #2
+ 194 014c 080053E5 		ldrb	r0, [r3, #-8]	@ zero_extendqisi2
+ 195 0150 FEFFFFEB 		bl	putchar
+  56:mandel.c      **** 	for (x = 0; x < SIZE; x++)
+ 196              		.loc 1 56 0 discriminator 2
+ 197 0154 040055E1 		cmp	r5, r4
+ 198 0158 F3FFFF1A 		bne	.L11
+  59:mandel.c      **** 	  }
+  60:mandel.c      **** 	printf("\n");
+ 199              		.loc 1 60 0
+ 200 015c 0A00A0E3 		mov	r0, #10
+ 201 0160 017087E2 		add	r7, r7, #1
+ 202 0164 FEFFFFEB 		bl	putchar
+  54:mandel.c      ****     for (y = 0; y < SIZE; y++)
+ 203              		.loc 1 54 0
+ 204 0168 FA0F57E3 		cmp	r7, #1000
+ 205              		.loc 1 60 0
+ 206 016c 045085E2 		add	r5, r5, #4
+  54:mandel.c      ****     for (y = 0; y < SIZE; y++)
+ 207              		.loc 1 54 0
+ 208 0170 EBFFFF1A 		bne	.L10
+ 209              	.L9:
+  61:mandel.c      ****       }
+  62:mandel.c      ****   }
+  63:mandel.c      ****   return 0;
+  64:mandel.c      **** }
+ 210              		.loc 1 64 0
+ 211 0174 0000A0E3 		mov	r0, #0
+ 212 0178 43DF8DE2 		add	sp, sp, #268
+ 213 017c 42DB8DE2 		add	sp, sp, #67584
+ 214 0180 0FD78DE2 		add	sp, sp, #3932160
+ 215 0184 F080BDE8 		ldmfd	sp!, {r4, r5, r6, r7, pc}
+ 216              	.L19:
+ 217              		.align	2
+ 218              	.L18:
+ 219 0188 A69B443B 		.word	994352038
+ 220 018c 6F1203BB 		.word	-1157426577
+ 221 0190 00000000 		.word	0
+ 222              		.cfi_endproc
+ 223              	.LFE11:
+ 225              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 226              		.align	2
+ 227              	.LC0:
+ 228 0000 2A202E2D 		.ascii	"* .-+#@\000"
+ 228      2B234000 
+ 229              		.text
+ 230              	.Letext0:
