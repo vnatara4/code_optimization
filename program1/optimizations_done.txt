@@ -1,0 +1,10 @@
+1. Replacing common expressions 
+inverse of 0.5
+
+2.Float comparison
+
+3. inverse square root variant
+
+4. algebraic reduction
+
+5. Compiler optimization flags
